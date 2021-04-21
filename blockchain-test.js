@@ -29,5 +29,20 @@ describe('Blockchain', () => {
         bc2.chain[0].data = 'Bad data';
         expect(bc.isValidChain(bc2.chain)).to.be.false;
     });
-    
+    it('Chain replacement with valid one', () => {
+        bc2.addBlock('goo');
+        // console.log(`${bc2.chain}`.toString());
+        // console.log(`${bc.chain}`.toString());
+        bc.replaceChain(bc2.chain);
+        // console.log(`${bc.chain}`.toString());
+        expect(bc.chain).to.equal(bc2.chain);
+        
+    });
+    it(`Chain replacement doesnt happen if new chain length is less than or equal to length`, () => {
+        bc.addBlock('foo-bar');
+        bc.replaceChain(bc2.chain);
+
+        expect(bc.chain).to.not.equal(bc2.chain);
+    });
+
 });
