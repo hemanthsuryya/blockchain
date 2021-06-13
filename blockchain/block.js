@@ -1,4 +1,5 @@
-const SHA256 = require('crypto-js/sha256');
+// const SHA256 = require('crypto-js/sha256');
+const ChainUtil = require('../chain-util');
 const {DIFFICULTY, MINE_RATE} = require('../config');
 class Block{
     constructor(timestamp, lastHash, hash, data, nonce, difficulty) {
@@ -39,7 +40,7 @@ class Block{
     }
 
     static hash(timestamp, lastHash, data, nonce, difficulty) {
-        return SHA256(`${timestamp}${lastHash}${data}${nonce}${difficulty}`).toString();
+        return ChainUtil.hash(`${timestamp}${lastHash}${data}${nonce}${difficulty}`).toString();
     }
 
     static blockHash(block){
@@ -49,11 +50,11 @@ class Block{
 
     static adjustDifficulty(lastBlock, currentTime){
         let{ difficulty } = lastBlock;
-        if(lastBlock.timestamp + MINE_RATE> currentTime){
-            difficulty = difficulty+1
+        if(lastBlock.timestamp + MINE_RATE > currentTime){
+            difficulty = difficulty + 1;
         }
         else{
-            difficulty = difficulty -1;
+            difficulty = difficulty - 1;
         }
         // difficulty = lastBlock.timestamp + MINE_RATE > currentTime ? difficulty + 1: difficulty = difficulty -1;
         // console.log(`difficulty: ${difficulty}`);

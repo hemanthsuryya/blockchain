@@ -7,8 +7,12 @@
     "test": "jest --watchAll",
     "dev-test": "nodemon dev-test",
     "bc-test": "mocha ./blockchain/blockchain-test",
+    "tx-test": "mocha ./wallet/transaction-test",
     "start": "node ./app",
     "dev": "nodemon ./app"
+  },
+  "jest": {
+    "testEnvironment": "node"
   },
   "keywords": [],
   "author": "",
@@ -20,8 +24,11 @@
   },
   "dependencies": {
     "crypto-js": "^4.0.0",
+    "elliptic": "^6.5.4",
     "express": "^4.17.1",
+    "jest": "^27.0.4",
     "mocha-repeat": "^0.1.0",
+    "uuid": "^8.3.2",
     "ws": "^7.4.5"
   }
 }

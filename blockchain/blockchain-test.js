@@ -55,7 +55,7 @@ describe('Blockchain', () => {
     });
 
     it(`lowers the difficulty for slowly mined blocks`, () => {
-        expect(Block.adjustDifficulty(block, block.timestamp+3000)).to.equal(block.difficulty-1);
+        expect(Block.adjustDifficulty(block, block.timestamp+30000)).to.equal(block.difficulty-1);
     });
 
     it(`increases the difficulty for quickly mined blocks`, () => {
