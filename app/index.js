@@ -5,7 +5,7 @@ const P2pServer     = require('./p2p-server');
 
 const bodyParser = require('body-parser');
 const HTTP_PORT = process.env.HTTP_PORT || 3001;
-
+// HTTP_PORT=3002 npm run dev
 const app   = express();
 app.use(bodyParser.json());
 const bc    = new Blockchain();

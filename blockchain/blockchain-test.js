@@ -1,14 +1,18 @@
 const Blockchain = require('.');
 const Block = require('./block');
 var expect = require('chai').expect;
+var repeat = require('mocha-repeat');
 
 describe('Blockchain', () => {
     console.log("test");
-    let bc, bc2;
+    let bc, bc2, data, lastBlock, block;
 
     beforeEach(() => {
         bc = new Blockchain();
         bc2 = new Blockchain();
+        data = 'bar';
+        lastBlock = Block.genesis();
+        block = Block.mineBlock(lastBlock, data);
     });
 
     it('Adds genesis block', () => {
@@ -44,5 +48,19 @@ describe('Blockchain', () => {
 
         expect(bc.chain).to.not.equal(bc2.chain);
     });
+
+    it(`Generates a hash that matches the difficulty`, () => {
+        expect(block.hash.substring(0, block.difficulty)).to.equal('0'. repeat(block.difficulty));
+        // console.log(block.toString());
+    });
+
+    it(`lowers the difficulty for slowly mined blocks`, () => {
+        expect(Block.adjustDifficulty(block, block.timestamp+3000)).to.equal(block.difficulty-1);
+    });
+
+    it(`increases the difficulty for quickly mined blocks`, () => {
+        expect(Block.adjustDifficulty(block, block.timestamp+1)).to.equal(block.difficulty+1);
+    });
+
 
 });
