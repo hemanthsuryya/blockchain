@@ -8,6 +8,7 @@
     "dev-test": "nodemon dev-test",
     "bc-test": "mocha ./blockchain/blockchain-test",
     "tx-test": "mocha ./wallet/transaction-test",
+    "tx_pool-test": "mocha ./wallet/transaction-pool-test",
     "start": "node ./app",
     "dev": "nodemon ./app"
   },
