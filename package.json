@@ -7,6 +7,7 @@
     "test": "jest --watchAll",
     "dev-test": "nodemon dev-test",
     "bc-test": "mocha ./blockchain/blockchain-test",
+    "wallet-test": "mocha ./wallet/index-test",
     "tx-test": "mocha ./wallet/transaction-test",
     "tx_pool-test": "mocha ./wallet/transaction-pool-test",
     "start": "node ./app",

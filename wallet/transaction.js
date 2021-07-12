@@ -34,8 +34,8 @@ class Transaction{
             {amount, address: recipient }
         ])
         Transaction.signTransaction(transaction, senderWallet);
-        console.log(`newTx: `);
-        console.log(transaction);
+        // console.log(`newTx: `);
+        // console.log(transaction);
         return transaction;
     }
 
